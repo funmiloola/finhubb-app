@@ -11,7 +11,7 @@ export default function Dashboard() {
           Welcome back!
         </h2>
 
-        <p className="text-gray-500 pt-1">
+        <p className="text-gray-500 pt-1 pb-3">
           Here's what is happening today.
         </p>
       </div>

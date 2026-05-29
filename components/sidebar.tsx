@@ -44,8 +44,6 @@ export default function Sidebar() {
               className="
                 text-white font-medium
                 px-4 py-3 rounded-xl
-                hover:bg-slate-700
-                transition
               "
               onClick={() => setOpen(false)}
             >
