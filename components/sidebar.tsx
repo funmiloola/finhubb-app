@@ -12,19 +12,11 @@ export default function Sidebar() {
       name: "Dashboard",
       path: "/dashboard",
     },
-    {
-      name: "History",
-      path: "/history",
-    },
-    {
-      name: "About",
-      path: "/about",
-    },
   ]
 
   return (
     <>
-      <div className="md:hidden flex items-center justify-between bg-[#0F172A] text-white p-4">
+      <div className="lg:hidden flex items-center justify-between bg-[#0F172A] text-white p-4">
         <h1 className="font-bold text-lg">Dashboard</h1>
 
         <button onClick={() => setOpen(!open)}>
@@ -34,17 +26,17 @@ export default function Sidebar() {
       <div
         className={`
           fixed top-0 left-0 z-50
-          h-screen w-64 bg-[#0F172A]
+          h-screen  bg-[#0F172A]
           transform transition-transform duration-300
           ${open ? "translate-x-0" : "-translate-x-full"}
-          md:translate-x-0
-          md:static
+          lg:translate-x-0
+          lg:static
         `}
       >
-        <div className="text-white text-2xl font-bold p-6 border-b border-slate-700">
-          My App
+        <div className="text-white text-2xl font-bold p-4 border-b border-slate-700">
+          FINHUBB
         </div>
-        <div className="flex flex-col gap-3 p-5">
+        <div className="flex flex-col gap-3 px-2">
           {menu.map((m, index) => (
             <Link
               key={index}

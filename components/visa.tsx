@@ -5,7 +5,7 @@ export default async function VisaList() {
         const data = res.data?.slice(0,4)
   
   return (
-    <section className="bg-white border border-gray-200 rounded-xl p-6 shadow-md">
+    <section className="bg-white border border-gray-200 rounded-xl p-6 shadow-md h-full">
       <h2 className="text-xl font-semibold text-gray-800 pb-4">Visa Applications</h2>
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
       {data.map((item:any) => (

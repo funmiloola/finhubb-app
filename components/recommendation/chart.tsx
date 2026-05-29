@@ -29,7 +29,7 @@ export default function RecommendationChart({
   }));
 
   return (
-    <div className="rounded-xl bg-white border border-gray-200 p-6 lg:min-h-[602px] shadow-md">
+    <div className="rounded-xl bg-white border border-gray-200 p-6 w-full h-full shadow-md">
       <h2 className="pb-4 text-xl text-gray-800 font-semibold">
         Recommendation Trends
       </h2>

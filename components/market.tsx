@@ -3,7 +3,7 @@ import { finhubb } from "@/lib/finhubb"
 export default async function MarketNews() {
    const news = await finhubb("/news?category=general")
     return (
-        <div className="border border-gray-200 bg-white shadow-md p-4 rounded-lg">
+        <div className="border border-gray-200 bg-white shadow-md p-4 rounded-lg h-full">
           <h2 className="text-xl font-semibold text-gray-800">
         Market News
       </h2>

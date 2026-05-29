@@ -4,7 +4,7 @@ export default async function UsaSPending() {
 
     const spending = await finhubb('/stock/usa-spending?symbol=LMT')
     return (
-        <div className="rounded-xl border border-gray-200 p-4 bg-white lg:min-h-[549px] shadow-md">
+        <div className="rounded-xl border border-gray-200 p-4 bg-white h-full shadow-md">
       <h2 className="pb-6 text-xl font-semibold text-gray-800">
         USA Spending
       </h2>
