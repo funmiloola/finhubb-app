@@ -1,23 +1,37 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import { useState } from "react"
-import { Menu, X } from "lucide-react"
+import Link from "next/link";
+import { useState } from "react";
+import { Menu, X } from "lucide-react";
+import { usePathname } from "next/navigation";
 
 export default function Sidebar() {
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(false);
+  const pathname = usePathname();
 
   const menu = [
     {
-      name: "Dashboard",
-      path: "/dashboard",
+      name: "Market News",
+      path: "/dashboard/market-news",
     },
-  ]
+    {
+      name: "Recommendation Charts",
+      path: "/dashboard/recommendation",
+    },
+    {
+      name: "Visa Application",
+      path: "/dashboard/visa",
+    },
+    {
+      name: "USA Spending",
+      path: "/dashboard/usa",
+    },
+  ];
 
   return (
     <>
-      <div className="lg:hidden flex items-center justify-between bg-[#0F172A] text-white p-4">
-        <h1 className="font-bold text-lg">Dashboard</h1>
+      <div className="lg:hidden flex items-center justify-between bg-[#0F172A] text-white p-4 font-roboto">
+        <h1 className="font-bold text-lg">Finhubb</h1>
 
         <button onClick={() => setOpen(!open)}>
           {open ? <X size={28} /> : <Menu size={28} />}
@@ -36,15 +50,12 @@ export default function Sidebar() {
         <div className="text-white text-2xl font-bold p-4 border-b border-slate-700">
           FINHUBB
         </div>
-        <div className="flex flex-col gap-3 px-2">
+        <div className="flex flex-col gap-3 px-2 pt-4">
           {menu.map((m, index) => (
             <Link
               key={index}
               href={m.path}
-              className="
-                text-white font-medium
-                px-4 py-3 rounded-xl
-              "
+              className={`text-white font-medium px-4 py-3 hover:bg-gray-600 rounded-md ${pathname === m.path ? "bg-gray-700":""}`}
               onClick={() => setOpen(false)}
             >
               {m.name}
@@ -59,5 +70,5 @@ export default function Sidebar() {
         />
       )}
     </>
-  )
+  );
 }

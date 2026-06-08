@@ -1,16 +1,17 @@
 import { finhubb } from "@/lib/finhubb";
+import Link from "next/link";
 
 export default async function VisaList() {
         const res = await finhubb('/stock/visa-application?symbol=AAPL&from=2025-01-01&to=2025-12-31')
-        const data = res.data?.slice(0,4)
+        const data = res.data?.slice(0,16)  || []
   
   return (
-    <section className="bg-white border border-gray-200 rounded-xl p-6 shadow-md h-full">
+    <section className=" px-4 py-8 h-full font-roboto">
       <h2 className="text-xl font-semibold text-gray-800 pb-4">Visa Applications</h2>
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-      {data.map((item:any) => (
+        {data.map((item: any) => (
+        <Link href={`/dashboard/visa/${item.caseNumber}`} key={item.caseNumber}>
         <div
-          key={item.caseNumber}
           className="rounded-xl border border-gray-300 p-4 "
         >
           <div className="flex justify-between items-start">
@@ -59,7 +60,8 @@ export default async function VisaList() {
             Received: {item.receivedDate} | Year:{" "}
             {item.year} Q{item.quarter}
           </div>
-        </div>
+            </div>
+            </Link>
       ))}
       </div>
       </section>

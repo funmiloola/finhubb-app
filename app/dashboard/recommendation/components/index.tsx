@@ -29,14 +29,14 @@ export default function RecommendationChart({
   }));
 
   return (
-    <div className="rounded-xl bg-white border border-gray-200 p-6 w-full h-full shadow-md">
-      <h2 className="pb-4 text-xl text-gray-800 font-semibold">
+    <div className="p-6 w-full h-full">
+      <h2 className="py-4 text-xl text-gray-800 font-semibold">
         Recommendation Trends
       </h2>
 
-      <div className="h-125 w-full">
+      <div className="h-120 w-full">
         <ResponsiveContainer width="100%" height="100%">
-          <BarChart data={chartData} barSize={20}>
+          <BarChart data={chartData} barSize={60}>
             <XAxis dataKey="month" />
             <YAxis />
             <Tooltip />
