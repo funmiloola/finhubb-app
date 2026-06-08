@@ -55,7 +55,7 @@ export default function Sidebar() {
             <Link
               key={index}
               href={m.path}
-              className={`text-white font-medium px-4 py-3 hover:bg-gray-600 rounded-md ${pathname === m.path ? "bg-gray-700":""}`}
+              className={`text-white font-medium px-4 py-3 hover:bg-gray-600 rounded-md ${pathname.includes(m.path) ? "bg-gray-700":""}`}
               onClick={() => setOpen(false)}
             >
               {m.name}
