@@ -1,24 +1,43 @@
+type UsaSpendingItem = {
+  recipientName: string;
+  awardingAgencyName: string;
+  performanceStartDate: string;
+  performanceEndDate: string;
+  naicsCode: string;
+};
+
+type UsaSpendingResponse = {
+  data: UsaSpendingItem[];
+};
+
+type UsaSpendingDetailsProps = {
+  params: Promise<{
+    naicsCode: string;
+  }>;
+};
+
 import { finhubb } from "@/lib/finhubb";
 
 export default async function UsaSpendingDetails({
   params,
-}: {
-  params: Promise<{
-    naicsCode: string;
-  }>;
-}) {
+}: UsaSpendingDetailsProps) {
   const { naicsCode } = await params;
 
-  const spending = await finhubb("/stock/usa-spending?symbol=LMT");
+  const spending: UsaSpendingResponse = await finhubb(
+    "/stock/usa-spending?symbol=LMT",
+  );
 
-  const item = spending.data.find((s: any) => s.naicsCode === naicsCode);
+  const item = spending.data.find(
+    (s: UsaSpendingItem) => s.naicsCode === naicsCode,
+  );
+
   if (!item) {
     return <div className="p-10">Spending data not found</div>;
   }
 
   return (
     <section className="py-6 font-roboto px-4 lg:px-0 w-full lg:w-1/2">
-      <div className=" rounded-2xl border border-gray-200 shadow-sm p-5 lg:p-7">
+      <div className="rounded-2xl border border-gray-200 shadow-sm p-5 lg:p-7">
         <div className="flex items-start justify-between">
           <div>
             <p className="text-sm text-blue-600 font-medium">
@@ -26,74 +45,79 @@ export default async function UsaSpendingDetails({
             </p>
 
             <h1 className="text-lg lg:text-4xl font-bold text-gray-900 pt-2">
-              {item?.recipientName}
+              {item.recipientName}
             </h1>
 
             <p className="pt-2 text-base lg:text-lg text-gray-500">
-              {item?.awardingAgencyName}
+              {item.awardingAgencyName}
             </p>
           </div>
 
           <div
-            className={`h-16 w-16 rounded-xl text-white flex items-center justify-center text-2xl font-bold ${item?.recipientName.includes("L") ? "bg-green-500" : "bg-blue-600"}`}
+            className={`h-16 w-16 rounded-xl text-white flex items-center justify-center text-2xl font-bold ${
+              item.recipientName.includes("L") ? "bg-green-500" : "bg-blue-600"
+            }`}
           >
-            {item?.recipientName?.charAt(0)}
+            {item.recipientName.charAt(0)}
           </div>
         </div>
+
         <div className="flex flex-col gap-1">
-          <div className="">
+          <div>
             <p className="text-sm text-gray-400">Start Date</p>
 
             <h3 className="text-base lg:text-xl font-semibold pt-2">
-              {item?.performanceStartDate}
+              {item.performanceStartDate}
             </h3>
           </div>
 
-          <div className="">
+          <div>
             <p className="text-sm text-gray-400">End Date</p>
 
             <h3 className="text-base lg:text-xl font-semibold pt-2">
-              {item?.performanceEndDate}
+              {item.performanceEndDate}
             </h3>
           </div>
 
-          <div className="">
+          <div>
             <p className="text-sm text-gray-400">Agency</p>
 
             <h3 className="text-base lg:text-xl font-semibold pt-2">
-              {item?.awardingAgencyName}
+              {item.awardingAgencyName}
             </h3>
           </div>
         </div>
+
         <div className="pt-8">
           <div className="rounded-xl border border-gray-200 p-5">
             <h2 className="text-xl font-semibold pb-2">
               Recipient Information
             </h2>
 
-            <div className=" text-gray-600">
+            <div className="text-gray-600">
               <p>
                 <span className="font-medium">Recipient:</span>{" "}
-                {item?.recipientName}
+                {item.recipientName}
               </p>
 
               <p>
                 <span className="font-medium">Agency:</span>{" "}
-                {item?.awardingAgencyName}
+                {item.awardingAgencyName}
               </p>
 
               <p>
                 <span className="font-medium">Start Date:</span>{" "}
-                {item?.performanceStartDate}
+                {item.performanceStartDate}
               </p>
 
               <p>
                 <span className="font-medium">End Date:</span>{" "}
-                {item?.performanceEndDate}
+                {item.performanceEndDate}
               </p>
             </div>
           </div>
         </div>
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-8">
           <div className="rounded-xl border border-gray-200 p-3">
             <h3 className="font-semibold text-lg pb-4">Contract Status</h3>
@@ -111,8 +135,8 @@ export default async function UsaSpendingDetails({
             <h3 className="font-semibold text-lg pb-4">Contract Timeline</h3>
 
             <p className="text-gray-600">
-              Performance duration spans from {item?.performanceStartDate} to{" "}
-              {item?.performanceEndDate}.
+              Performance duration spans from {item.performanceStartDate} to{" "}
+              {item.performanceEndDate}.
             </p>
           </div>
         </div>
