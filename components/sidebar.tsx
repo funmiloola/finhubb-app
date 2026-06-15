@@ -40,7 +40,7 @@ export default function Sidebar() {
       <div
         className={`
           fixed top-0 left-0 z-50
-          h-screen  bg-[#0F172A]
+          h-screen w-2/3 md:w-full  bg-[#0F172A] 
           transform transition-transform duration-300
           ${open ? "translate-x-0" : "-translate-x-full"}
           lg:translate-x-0

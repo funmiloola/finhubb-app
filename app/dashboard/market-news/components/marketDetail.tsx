@@ -1,21 +1,14 @@
 "use client"
 
 import Image from "next/image"
-import { useRouter } from "next/navigation"
 import { ArrowLeft } from "lucide-react"
 
 export default function MarketDetail({ article }: any) {
 
-const router = useRouter()
-
     return (
-        <section className="py-6 px-4 lg:px-0 max-w-full lg:max-w-2/3 font-roboto">
-            <h1 onClick={()=>router.back()} className="flex gap-1 items-center cursor-pointer text-lg pb-3">
-        <ArrowLeft size={16}/>
-        Back
-      </h1>
-      <div className=" rounded-2xl border border-gray-200 shadow-sm">
-        <div className="relative w-full h-[420px]">
+        <section className=" py-6 px-4 lg:px-0 font-roboto">
+      <div className="">
+        <div className="relative w-full h-[320px]">
           <Image
             src={article.image}
             alt={article.headline}

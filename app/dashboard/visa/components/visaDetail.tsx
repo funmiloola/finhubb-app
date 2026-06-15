@@ -1,17 +1,10 @@
 'use client'
 
-import { useRouter } from "next/navigation"
-import { ArrowLeft } from "lucide-react"
-
 export default function VisaDetail({ visa }: any) {
-    const router = useRouter()
+    
     return (
-        <section className="font-roboto w-full lg:w-1/2 px-4 py-6  lg:pt-10 lg:pb-4">
-            <h1 onClick={()=>router.back()} className="flex gap-1 items-center cursor-pointer text-lg pb-3">
-        <ArrowLeft size={16}/>
-        Back
-      </h1>
-      <div className=" rounded-2xl border border-gray-200 shadow-sm p-4 lg:p-7">
+        <section className="font-roboto w-full px-4 py-6  lg:pt-10 lg:pb-4">
+      <div className="">
         <div className="flex items-start justify-between">
           <div>
             <p className="text-sm text-blue-600 font-medium">
